@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>會員詳細資料</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="member-styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="member-container">
+    <header class="member-header">
+      <h1 class="member-title">會員詳細資料</h1>
+      <button class="logout-btn" onclick="logout()">登出</button>
+    </header>
+
+    <nav class="member-nav" role="tablist" aria-label="會員功能選單">
+      <button class="nav-button active" data-target="#account-info" role="tab" aria-selected="true">帳號資訊</button>
+      <button class="nav-button" data-target="#password-change" role="tab" aria-selected="false">密碼修改</button>
+      <button class="nav-button" data-target="#address-book" role="tab" aria-selected="false">收件地址</button>
+      <button class="nav-button" data-target="#order-query" role="tab" aria-selected="false">購物查詢</button>
+      <button class="nav-button" data-target="#order-history" role="tab" aria-selected="false">購物紀錄</button>
+    </nav>
+
+    <section class="member-panels">
+      <!-- 帳號資訊 -->
+      <div id="account-info" class="member-panel active">
+        <h2>帳號資訊</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>會員帳號</label>
+            <div class="info-value" id="member-account">user123</div>
+          </div>
+          <div class="info-item">
+            <label>電子郵件</label>
+            <div class="info-value" id="member-email">user@example.com</div>
+          </div>
+          <div class="info-item">
+            <label>註冊日期</label>
+            <div class="info-value" id="member-reg-date">2024-01-15</div>
+          </div>
+          <div class="info-item">
+            <label>會員等級</label>
+            <div class="info-value member-level" id="member-level">一般會員</div>
+          </div>
+        </div>
+        <button class="edit-btn" onclick="editAccountInfo()">編輯資料</button>
+      </div>
+
+      <!-- 密碼修改 -->
+      <div id="password-change" class="member-panel">
+        <h2>密碼修改</h2>
+        <form id="password-form" novalidate>
+          <div class="field">
+            <label for="current-password">目前密碼</label>
+            <input id="current-password" name="currentPassword" type="password" placeholder="請輸入目前密碼" required>
+            <p class="error" data-error-for="current-password"></p>
+          </div>
+          <div class="field">
+            <label for="new-password">新密碼</label>
+            <input id="new-password" name="newPassword" type="password" placeholder="至少 6 碼" minlength="6" required>
+            <p class="error" data-error-for="new-password"></p>
+          </div>
+          <div class="field">
+            <label for="confirm-password">確認新密碼</label>
+            <input id="confirm-password" name="confirmPassword" type="password" placeholder="再次輸入新密碼" minlength="6" required>
+            <p class="error" data-error-for="confirm-password"></p>
+          </div>
+          <button type="submit" class="primary">修改密碼</button>
+        </form>
+      </div>
+
+      <!-- 收件地址 -->
+      <div id="address-book" class="member-panel">
+        <h2>收件地址</h2>
+        <div class="address-list" id="address-list">
+          <div class="address-item">
+            <div class="address-info">
+              <h3>王小明</h3>
+              <p>0912-345-678</p>
+              <p>台北市信義區信義路五段7號</p>
+            </div>
+            <div class="address-actions">
+              <button class="edit-btn small" onclick="editAddress(1)">編輯</button>
+              <button class="delete-btn small" onclick="deleteAddress(1)">刪除</button>
+            </div>
+          </div>
+        </div>
+        <button class="add-btn" onclick="addAddress()">新增地址</button>
+      </div>
+
+      <!-- 購物查詢 -->
+      <div id="order-query" class="member-panel">
+        <h2>購物查詢</h2>
+        <form id="order-query-form" novalidate>
+          <div class="field">
+            <label for="order-number">訂單編號</label>
+            <input id="order-number" name="orderNumber" type="text" placeholder="請輸入訂單編號" required>
+            <p class="error" data-error-for="order-number"></p>
+          </div>
+          <button type="submit" class="primary">查詢訂單</button>
+        </form>
+        <div class="query-result" id="query-result" style="display: none;">
+          <h3>查詢結果</h3>
+          <div class="order-info" id="order-info"></div>
+        </div>
+      </div>
+
+      <!-- 購物紀錄 -->
+      <div id="order-history" class="member-panel">
+        <h2>購物紀錄</h2>
+        <div class="order-list" id="order-list">
+          <div class="order-item">
+            <div class="order-header">
+              <span class="order-number">#ORD-2024-001</span>
+              <span class="order-date">2024-01-15</span>
+              <span class="order-status status-pending">處理中</span>
+            </div>
+            <div class="order-details">
+              <p>商品：時尚T恤 x2, 牛仔褲 x1</p>
+              <p class="order-total">總金額：NT$ 2,580</p>
+            </div>
+            <div class="order-actions">
+              <button class="view-btn" onclick="viewOrder('ORD-2024-001')">查看詳情</button>
+              <button class="track-btn" onclick="trackOrder('ORD-2024-001')">追蹤物流</button>
+            </div>
+          </div>
+          <div class="order-item">
+            <div class="order-header">
+              <span class="order-number">#ORD-2024-002</span>
+              <span class="order-date">2024-01-10</span>
+              <span class="order-status status-completed">已完成</span>
+            </div>
+            <div class="order-details">
+              <p>商品：運動鞋 x1</p>
+              <p class="order-total">總金額：NT$ 1,890</p>
+            </div>
+            <div class="order-actions">
+              <button class="view-btn" onclick="viewOrder('ORD-2024-002')">查看詳情</button>
+              <button class="review-btn" onclick="reviewOrder('ORD-2024-002')">評價商品</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <template id="toast-template">
+    <div class="toast" role="status" aria-live="polite"></div>
+  </template>
+
+  <script src="member-script.js"></script>
+  <noscript>此頁面需要 JavaScript 才能正常運作。</noscript>
+</body>
+</html>

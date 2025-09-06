@@ -1,0 +1,342 @@
+/* 註冊頁面樣式 */
+
+.register-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 24px;
+}
+
+.register-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.register-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.back-btn {
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: var(--muted);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.back-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: #f8fafc;
+}
+
+.register-form-container {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 12px 32px rgba(17,24,39,0.06);
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--text);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(17,24,39,0.1);
+}
+
+.field textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 4px 0 0 0;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 12px;
+  margin: 4px 0 0 0;
+  min-height: 16px;
+}
+
+/* 複選框樣式 */
+.checkbox-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e5e7eb;
+  border-radius: 4px;
+  background: #ffffff;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  margin-top: 2px;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-label a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.checkbox-label a:hover {
+  text-decoration: underline;
+}
+
+/* 按鈕樣式 */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.primary-btn {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.primary-btn:hover {
+  background: var(--primary-600);
+  transform: translateY(-1px);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+.secondary-btn {
+  padding: 12px 24px;
+  background: #ffffff;
+  color: var(--muted);
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.secondary-btn:hover {
+  color: var(--text);
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+
+/* 表單驗證狀態 */
+.field input.error,
+.field select.error,
+.field textarea.error {
+  border-color: var(--danger);
+}
+
+.field input.error:focus,
+.field select.error:focus,
+.field textarea.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* 載入狀態 */
+.primary-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.primary-btn:disabled:hover {
+  background: #9ca3af;
+  transform: none;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .register-container {
+    margin: 10px auto;
+    padding: 16px;
+  }
+  
+  .register-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .register-form-container {
+    padding: 24px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-form-container {
+    padding: 16px;
+  }
+  
+  .register-form {
+    gap: 24px;
+  }
+  
+  .form-section {
+    gap: 16px;
+  }
+}
+
+/* 動畫效果 */
+.register-form {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 成功狀態 */
+.field.success input,
+.field.success select,
+.field.success textarea {
+  border-color: var(--success);
+}
+
+.field.success input:focus,
+.field.success select:focus,
+.field.success textarea:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* 縣市選擇器樣式 */
+.field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 32px;
+}
+
+/* 電話號碼格式化 */
+.field input[type="tel"] {
+  font-family: monospace;
+  letter-spacing: 1px;
+}

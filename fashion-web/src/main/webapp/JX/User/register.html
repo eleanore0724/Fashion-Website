@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>註冊帳號</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="register-styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="register-container">
+    <header class="register-header">
+      <h1 class="register-title">註冊帳號</h1>
+      <button class="back-btn" onclick="goBack()">返回登入</button>
+    </header>
+
+    <div class="register-form-container">
+      <form id="register-form" class="register-form" novalidate>
+        <div class="form-section">
+          <h2>基本資料</h2>
+          
+          <div class="field">
+            <label for="member-account">會員帳號</label>
+            <input id="member-account" name="account" type="text" placeholder="請輸入會員帳號" required>
+            <p class="error" data-error-for="member-account"></p>
+            <p class="field-hint">帳號將用於登入，請選擇容易記住的帳號</p>
+          </div>
+
+          <div class="field">
+            <label for="member-email">電子郵件</label>
+            <input id="member-email" name="email" type="email" placeholder="you@example.com" required>
+            <p class="error" data-error-for="member-email"></p>
+            <p class="field-hint">請輸入有效的電子郵件地址</p>
+          </div>
+
+          <div class="field">
+            <label for="member-name">姓名</label>
+            <input id="member-name" name="name" type="text" placeholder="請輸入真實姓名" required>
+            <p class="error" data-error-for="member-name"></p>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>密碼設定</h2>
+          
+          <div class="field">
+            <label for="member-password">密碼</label>
+            <input id="member-password" name="password" type="password" placeholder="至少 6 碼" minlength="6" required>
+            <p class="error" data-error-for="member-password"></p>
+            <p class="field-hint">密碼長度至少 6 個字元</p>
+          </div>
+
+          <div class="field">
+            <label for="confirm-password">確認密碼</label>
+            <input id="confirm-password" name="confirmPassword" type="password" placeholder="再次輸入密碼" minlength="6" required>
+            <p class="error" data-error-for="confirm-password"></p>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>收件地址</h2>
+          
+          <div class="field">
+            <label for="recipient-name">收件人姓名</label>
+            <input id="recipient-name" name="recipientName" type="text" placeholder="請輸入收件人姓名" required>
+            <p class="error" data-error-for="recipient-name"></p>
+          </div>
+
+          <div class="field">
+            <label for="recipient-phone">聯絡電話</label>
+            <input id="recipient-phone" name="recipientPhone" type="tel" placeholder="09XX-XXX-XXX" required>
+            <p class="error" data-error-for="recipient-phone"></p>
+          </div>
+
+          <div class="field">
+            <label for="address-city">縣市</label>
+            <select id="address-city" name="city" required>
+              <option value="">請選擇縣市</option>
+              <option value="台北市">台北市</option>
+              <option value="新北市">新北市</option>
+              <option value="桃園市">桃園市</option>
+              <option value="台中市">台中市</option>
+              <option value="台南市">台南市</option>
+              <option value="高雄市">高雄市</option>
+              <option value="基隆市">基隆市</option>
+              <option value="新竹市">新竹市</option>
+              <option value="嘉義市">嘉義市</option>
+              <option value="新竹縣">新竹縣</option>
+              <option value="苗栗縣">苗栗縣</option>
+              <option value="彰化縣">彰化縣</option>
+              <option value="南投縣">南投縣</option>
+              <option value="雲林縣">雲林縣</option>
+              <option value="嘉義縣">嘉義縣</option>
+              <option value="屏東縣">屏東縣</option>
+              <option value="宜蘭縣">宜蘭縣</option>
+              <option value="花蓮縣">花蓮縣</option>
+              <option value="台東縣">台東縣</option>
+              <option value="澎湖縣">澎湖縣</option>
+              <option value="金門縣">金門縣</option>
+              <option value="連江縣">連江縣</option>
+            </select>
+            <p class="error" data-error-for="address-city"></p>
+          </div>
+
+          <div class="field">
+            <label for="address-district">區域</label>
+            <input id="address-district" name="district" type="text" placeholder="請輸入區域" required>
+            <p class="error" data-error-for="address-district"></p>
+          </div>
+
+          <div class="field">
+            <label for="address-detail">詳細地址</label>
+            <textarea id="address-detail" name="addressDetail" placeholder="請輸入詳細地址（街道、巷弄、號碼等）" required></textarea>
+            <p class="error" data-error-for="address-detail"></p>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>服務條款</h2>
+          
+          <div class="field checkbox-field">
+            <label class="checkbox-label">
+              <input type="checkbox" id="agree-terms" name="agreeTerms" required>
+              <span class="checkmark"></span>
+              我已閱讀並同意 <a href="#" onclick="showTerms()">服務條款</a> 和 <a href="#" onclick="showPrivacy()">隱私政策</a>
+            </label>
+            <p class="error" data-error-for="agree-terms"></p>
+          </div>
+
+          <div class="field checkbox-field">
+            <label class="checkbox-label">
+              <input type="checkbox" id="agree-marketing" name="agreeMarketing">
+              <span class="checkmark"></span>
+              我同意接收商品優惠資訊和最新消息（可隨時取消）
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="secondary-btn" onclick="goBack()">取消</button>
+          <button type="submit" class="primary-btn">註冊帳號</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <template id="toast-template">
+    <div class="toast" role="status" aria-live="polite"></div>
+  </template>
+
+  <script src="register-script.js"></script>
+  <noscript>此頁面需要 JavaScript 才能正常運作。</noscript>
+</body>
+</html>
