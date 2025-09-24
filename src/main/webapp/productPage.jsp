@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>商品詳情 - 時尚女裝</title>
 <link rel="stylesheet" href="css/productPage.css">
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 </head>
 <body>
 	<%@include file="components/header.jsp"%>
@@ -214,6 +214,7 @@
 	<%@include file="components/footer.jsp"%>
 	
 	<script src="productPageScript.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 </body>
 </html>
 
