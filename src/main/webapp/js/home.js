@@ -19,12 +19,12 @@
 		if (!a) return;
 
 		const card = a.closest('.card');
-		const name = card.querySelector('.name').textContent?.trim() || '商品';
+		const name = card.querySelector('.name').textContent.trim() || '商品';
 		// 提示
-		live.textContent = `${name} 已加入購物車`;
+		live.textContent = name + '已加入購物車';
 
 		// 簡易 toast
-		toast.textContent = `${name} 已加入購物車`;
+		toast.textContent = name +  '已加入購物車';
 		toast.classList.add('show');
 		clearTimeout(window.__toastTimer);
 		window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 1400);
