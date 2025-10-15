@@ -8,13 +8,13 @@ import tw.com.fw.databaseutils.DBUtils;
 
 public class ProductDaoImlp implements ProductDao {
 
-/*	
+
     @Override
     public boolean addProduct(Product product) {
         // 這裡用 JDBC 連接資料庫，執行 INSERT INTO
         return false; // 先放 false，之後再寫實作
     }
-*/
+
     @Override
     public Product getProductById(int id) {
         return null; // 之後會用 SELECT 查詢
