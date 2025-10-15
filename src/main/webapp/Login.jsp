@@ -18,7 +18,7 @@
     </nav>
     
      <section class="tab-panels">
-      <form id="login" class="panel active" novalidate>
+      <form id="login" class="panel active" action="userServlet" method="POST" novalidate >
         <h2>會員登入</h2>
         <div class="field">
           <label for="login-email">電子郵件</label>
