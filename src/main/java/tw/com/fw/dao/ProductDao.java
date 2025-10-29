@@ -3,22 +3,32 @@ package tw.com.fw.dao;
 import java.util.List;
 import tw.com.fw.model.Product;
 
+/**
+ * DAO 的目的：把資料庫操作獨立出來，
+ * 讓程式更乾淨、容易維護。
+ */
+
 public interface ProductDao {
     
-    // 新增產品
-    boolean addProduct(Product product);
+	/* 新增產品資料到資料庫
+    * 回傳值：新增成功的筆數（通常是 1）
+    * int可改用boolean，回傳是否修改成功
+    */
+    int addProduct(Product product);
     
     // 根據 ID 查詢產品
-    Product getProductById(int ProductId);
+    Product getProductById(int productId);
     
     // 查詢所有產品
-    List<Product> getAllProducts();
+    List<Product> queryAll();
     
     // 更新產品資訊
-    boolean updateProduct(Product product);
+    // 回傳值：更新成功的筆數（通常是 1 或 0）
+    int updateProduct(Product product);
     
-    // 刪除產品
-    boolean deleteProduct(int id);
+    // 依照產品ID，刪除該產品資料
+    // 回傳值：刪除成功的筆數（通常是 1 或 0）
+    int deleteProduct(int productId);
     
     // 依照名稱或關鍵字查詢
     List<Product> searchProducts(String keyword);
