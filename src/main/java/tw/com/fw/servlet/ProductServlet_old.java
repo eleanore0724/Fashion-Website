@@ -1,6 +1,5 @@
 package tw.com.fw.servlet;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,53 +12,11 @@ import tw.com.fw.dao.ProductDao;
 import tw.com.fw.dao.daoImlp.ProductDaoImlp;
 import tw.com.fw.model.Product;
 
-@WebServlet("/ProductServlet")
-public class ProductServlet extends HttpServlet {
+@WebServlet("/productServlet")
+public class ProductServlet_old extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductDao dao = new ProductDaoImlp();
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		// 取得home.jsp傳來的參數
-		String category = request.getParameter("category");
-		/*
-		String categoryName = "";
 
-		// 依照類別顯示中文名稱
-		if (category.equals("Clothes")) {
-			categoryName = "上衣";
-		} else if (category.equals("Pants")) {
-			categoryName = "下衣";
-		} else if (category.equals("Bags")) {
-			categoryName = "包包";
-		} else {
-			categoryName = "全部";
-		}*/
-
-	
-	
-	// 從資料庫查詢該分類的商品清單
-	List<Product> productList = dao.getProductByCategory(category);
-	// 將資料放入request屬性，讓JSP能使用EL顯示
-	//request.setAttribute("category", category);
-	//request.setAttribute("categoryname", categoryName);
-	request.setAttribute("productList", productList);
-	
-	// 導到ProductCategoryPage.jsp顯示結果
-	request.getRequestDispatcher("ProductCategoryPage_try.jsp").forward(request, response);
-}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
-
-}
-	
-	
-
-	
-/* 暫時保留
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String status = request.getParameter("status");
@@ -108,5 +65,10 @@ public class ProductServlet extends HttpServlet {
 			request.getRequestDispatcher("add.jsp").forward(request, response);
 		}
 	}
-*/
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}
